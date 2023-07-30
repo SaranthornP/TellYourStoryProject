@@ -1,0 +1,98 @@
+body {
+  background-color: #fef5f5;
+}
+
+/*Navigation bar*/
+.navbar li p {
+  color: black;
+}
+
+.navbar li.active p {
+  color: #f55253;
+  font-weight: bold;
+}
+
+.navbar li:hover p {
+  color: darkred;
+}
+
+.ImgBrand {
+  width: 20%;
+  height: auto;
+}
+
+.nav .rigister {
+  background-color: #f55253;
+}
+
+.nav .rigister:hover {
+  background-color: darkred;
+}
+
+.nav .rigister:hover p {
+  color: white;
+}
+
+.nav .rigister p {
+  color: white;
+}
+
+/*---------------------------------------*/
+
+.ObjTag {
+  width: fit-content;
+}
+
+/*Home Page*/
+.homePage {
+  background-color: white;
+}
+
+.homePage .pHome {
+  background-color: #fdecec;
+  color: #f55556;
+  width: fit-content;
+  padding: 3px;
+}
+
+.homePage .hourColor {
+  color: #f55556;
+}
+
+.homePage h1 {
+  font-size: 65px;
+}
+
+/*---------------------------------------*/
+
+/*Consult Page*/
+.consultPage h1 {
+  font-size: 60px;
+}
+
+.consultPage .Heart {
+  color: #FD5DA8;
+}
+
+.consultPage .searchArea form {
+  width: 40%;
+}
+
+.consultPage .searchArea .form-control {
+  border: 0;
+  outline: none;
+}
+
+.consultPage .form-control:focus {
+  border: 0;
+  outline: none;
+  box-shadow: 0 0;
+}
+
+.consultPage .searchArea button {
+  background-color: #FD5DA8;
+  color: white;
+}
+
+
+/*---------------------------------------*/
