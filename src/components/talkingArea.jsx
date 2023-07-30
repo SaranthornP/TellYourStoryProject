@@ -1,40 +1,5 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase"
+
 import WebTest from "./test"
-
-async function getUser(db) {
-    const userCol = collection(db, 'User')
-    const userSnapshot = await getDocs(userCol)
-    return userSnapshot
-}
-
-async function getTag(db) {
-    const tagCol = collection(db, 'Tag')
-    const tagSnapshot = await getDocs(tagCol)
-    return tagSnapshot
-}
-
-function showData(user) {
-    console.log(user.data().Email)
-}
-
-function showTag(tag) {
-    const tagArr = tag.data().TagName
-    tagArr.forEach(element => {
-        console.log(element)
-    });
-
-}
-
-const data = await getUser(db)
-data.forEach(User => {
-    showData(User)
-})
-
-const tagData = await getTag(db)
-tagData.forEach(Tag => {
-    showTag(Tag)
-})
 
 
 export default function TalkingArea() {
