@@ -1,8 +1,33 @@
-
+import '../firebase'
 import WebTest from "./test"
+import { collection, getDocs, getFirestore } from 'firebase/firestore'
 
+
+// Acess to the Firestore database
+const db = getFirestore()
+
+// Get User from database
+async function getUser(db) {
+    const userRef = collection(db, 'User')
+    const userSnap = await getDocs(userRef)
+    return userSnap
+}
+
+// Display User data (Test)
+function showUser(user) {
+    const u = user.data()
+    console.log("Email :" + u.Email + "\nName: " + u.Firstname)
+    text += u.Email + ", "
+}
+
+const userDB = await getUser(db)
+let text = ""
+userDB.forEach(user => {
+    showUser(user)
+})
 
 export default function TalkingArea() {
+    text = text.slice(0, -1)
 
     return (
 
@@ -12,7 +37,7 @@ export default function TalkingArea() {
                 <form id="formSearch" className="d-flex align-items-center border rounded-pill p-3 me-3">
                     <i className="bi bi-search"></i>
                     <select className="select form-control me-2 rounded-pill choices-multiple-remove-button" multiple type="search" placeholder="Type..." aria-label="Search">
-                        <option value="1">One</option>
+                        <option value="1">{text}</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                         <option value="4">Four</option>
