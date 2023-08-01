@@ -22,13 +22,13 @@ function Navigation() {
                         <ul className='navbar-nav me-auto ms-4 mb-2 mb-lg-0 text-end'>
                             <CustomLink to="/">หน้าหลัก</CustomLink>
                             <CustomLink to="/Consult">ปรึกษา</CustomLink>
-                            <CustomLink to="/Talking_Area">พื้นที่พูดคุย</CustomLink>
+                            <CustomLink to="/Talkingarea">พื้นที่พูดคุย</CustomLink>
                             <CustomLink to="/Engagement">การนัดหมาย</CustomLink>
                             <CustomLink to="/Contact">ติดต่อ</CustomLink>
                         </ul>
                         <ul className='d-flex align-self-end navbar-nav text-end'>
-                            <CustomLink classN="fw-bold" to="/Login">ล็อกอิน</CustomLink>
-                            <CustomLink classN="fw-bold rigister rounded-pill px-3 text-white" to="/Register">สร้างบัญชี</CustomLink>
+                            <CustomLink classN="fw-bold" to="/Signin">ล็อกอิน</CustomLink>
+                            <CustomLink classN="fw-bold rigister rounded-pill px-3 text-white" to="/Signup">สร้างบัญชี</CustomLink>
 
                         </ul>
                     </div>

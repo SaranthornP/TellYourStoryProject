@@ -1,6 +1,8 @@
 import { Component } from "react";
 
+
 class ObjTag extends Component {
+
     render() {
         return (
             <h6 className="ObjTag mx-3 p-2 bg-white rounded-pill text-black border">{this.props.val}</h6>

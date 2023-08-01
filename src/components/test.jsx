@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { Component } from "react";
 import { colourOptions } from "./data.jsx";
 import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
@@ -36,7 +35,7 @@ export default class Example extends Component {
     render() {
         return (
             <span
-                class="d-inline-block"
+                className="d-inline-block"
                 data-toggle="popover"
                 data-trigger="focus"
                 data-content="Please selecet account(s)"
@@ -57,6 +56,3 @@ export default class Example extends Component {
         );
     }
 }
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Example />, rootElement);
