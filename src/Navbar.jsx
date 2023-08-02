@@ -1,4 +1,6 @@
 //Import css
+import { auth } from './firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import './App.css';
 
 //Import logo image
@@ -7,7 +9,30 @@ import Logo from './Logo.png';
 //Import function Link -> like a tag.
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
+const navbeforeLogin = document.getElementById("beforeLogin")
+const profile = document.getElementById("profile")
+
+
+onAuthStateChanged(auth, (user) => {
+    //login
+    if (user) {
+        profile.style.display = "block"
+        navbeforeLogin.style.display = "none"
+    } else {
+        profile.style.display = "none"
+        navbeforeLogin.style.display = "flex"
+    }
+})
+
+
 function Navigation() {
+    function handleLogout(e) {
+        signOut(auth).then(() => {
+            alert("ออกสู่ระบบ")
+        }).catch((error) => {
+            alert(error.message)
+        })
+    }
     return (
         <div className='container mb-5'>
             <nav className="nav navbar navbar-expand-lg">
@@ -26,11 +51,14 @@ function Navigation() {
                             <CustomLink to="/Engagement">การนัดหมาย</CustomLink>
                             <CustomLink to="/Contact">ติดต่อ</CustomLink>
                         </ul>
-                        <ul className='d-flex align-self-end navbar-nav text-end'>
+                        <ul id="beforeLogin" className='align-self-end navbar-nav text-end'>
                             <CustomLink classN="fw-bold" to="/Signin">ล็อกอิน</CustomLink>
                             <CustomLink classN="fw-bold rigister rounded-pill px-3 text-white" to="/Signup">สร้างบัญชี</CustomLink>
 
                         </ul>
+                        <div id="profile" onClick={handleLogout}>
+                            <button className='btn btn-dark'>Logout</button>
+                        </div>
                     </div>
                 </div>
 

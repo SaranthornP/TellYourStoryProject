@@ -1,10 +1,8 @@
-import '../firebase'
+import { db } from '../firebase'
 import WebTest from "./test"
-import { collection, getDocs, getFirestore } from 'firebase/firestore'
-
+import { collection, getDocs } from 'firebase/firestore'
 
 // Acess to the Firestore database
-const db = getFirestore()
 
 // Get User from database
 async function getUser(db) {

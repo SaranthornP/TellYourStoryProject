@@ -19,6 +19,10 @@ import Register from './components/register'
 
 // Set up Route for make navigation, Set up helmet
 import { Route, Routes } from 'react-router-dom'
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase'
+
+
 
 function App() {
   return (
