@@ -1,15 +1,25 @@
 import "../App.css"
 //import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import React from 'react';
+import React, { Component } from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase"
+import { useNavigate } from "react-router-dom";
 
 let form = null;
 let formarea = null;
 
-class Login extends React.Component {
-    handleSubmit = (e) => {
+function HookLogin() {
+    const navigate = useNavigate();
+    navigate('/');
+}
+
+export default class Login extends React.Component {
+    onTrigger = () => {
+        this.props.parentCallbackLogin(1)
+    }
+
+    handleSubmit(e) {
         e.preventDefault();
         form = document.getElementById("loginForm")
         formarea = document.getElementById("form-area")
@@ -17,7 +27,10 @@ class Login extends React.Component {
         const password = form.password.value
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
+
                 alert("Login สำเร็จ")
+                this.onTrigger
+                HookLogin()
 
 
             }).catch((error) => {
@@ -31,6 +44,7 @@ class Login extends React.Component {
                 else
                     alert(error.message)
             })
+        signInwith
     }
     render() {
         return (
@@ -102,7 +116,6 @@ class Login extends React.Component {
 
             </div >
 
-        );
+        )
     }
 }
-export default Login;
