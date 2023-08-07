@@ -1,21 +1,18 @@
+import { Link } from "react-router-dom";
 import "../App.css"
 //import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { auth } from "../firebase"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import React from 'react';
-
-let form = null;
-let formarea = null;
 
 export default function Register() {
     function handleSubmit(e) {
         e.preventDefault();
-        form = document.getElementById("RegisterForm")
-        formarea = document.getElementById("form-area")
+        const form = document.getElementById("RegisterForm")
+        const formarea = document.getElementById("form-area")
         const email = form.email.value
         const password = form.password.value
         createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
+            .then(() => {
                 alert("สร้างบัญชีสำเร็จ")
             }).catch((error) => {
                 if (error.message == "Firebase: Error (auth/email-already-in-use).")
@@ -54,16 +51,17 @@ export default function Register() {
                             <div className="divider d-flex align-items-center my-4">
                                 <p className="text-center fw-bold mx-3 mb-0">Or</p>
                             </div>
+                            <div className="row">
+                                <div className="form-floating mb-4 form-group col-12 col-lg-6">
+                                    <input type="text" name="firstname" id="floatingFS" className="form-control form-control-lg" placeholder="Enter Firstname" />
+                                    <label className="form-label ms-3" htmlFor="floatingFS">Firstname</label>
+                                </div>
+                                <div className="form-floating mb-4 form-group col-12 col-lg-6">
+                                    <input type="text" name="lastname" id="floatingLS" className="form-control form-control-lg" placeholder="Enter Lastname" />
+                                    <label className="form-label ms-3" htmlFor="floatingLS">Lastname</label>
+                                </div>
+                            </div>
 
-
-                            {/*<select className="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>*/}
-
-                            {/**Email input */}
                             <div className="form-floating mb-4 form-group">
                                 <input type="email" name="email" id="floatingEmail" className="form-control form-control-lg"
                                     placeholder="Enter a valid email address" />
@@ -81,7 +79,7 @@ export default function Register() {
                             <div className="text-center text-lg-start mt-4 pt-2 form-group">
                                 <button type="submit" className="btn btn-primary btn-lg px-auto">Register</button>
                                 <p className="small fw-bold mt-2 pt-1 mb-0">ยังไม่มีบัญชีหรอ?
-                                    <a href="#!" className="ps-1 link-danger">สมัครเลย!</a>
+                                    <Link to="/Signin" className="ps-1 link-danger">สมัครเลย!</Link>
                                 </p>
                             </div>
 

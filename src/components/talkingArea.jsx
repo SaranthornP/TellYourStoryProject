@@ -20,16 +20,22 @@ function showUser(user) {
 
 const userDB = await getUser(db)
 let text = ""
-userDB.forEach(user => {
-    showUser(user)
-})
+
 
 export default function TalkingArea() {
-    text = text.slice(0, -1)
 
+    function test() {
+        text = ""
+        userDB.forEach(user => {
+            showUser(user)
+
+        })
+        text = text.slice(0, -2)
+        console.log(1)
+    }
     return (
 
-        <div className="container consultPage">
+        <div className="container consultPage" onLoad={test()}>
             <h1>Talking Area</h1>
             <div className="col-12 mb-5 searchArea d-inline-flex justify-content-center">
                 <form id="formSearch" className="d-flex align-items-center border rounded-pill p-3 me-3">
