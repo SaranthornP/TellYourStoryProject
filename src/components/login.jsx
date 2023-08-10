@@ -1,27 +1,44 @@
 import "../App.css"
 //import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase"
+import { browserLocalPersistence, browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { db, auth } from "../firebase"
 import { useNavigate } from "react-router-dom";
-
-let form = null;
-let formarea = null;
-
+import { doc, getDoc } from "firebase/firestore";
 
 export default function Login() {
     const navigate = useNavigate();
+    const [persistenceValue, setPersistenceValue] = useState(false)
+    const handleChange = (event) => {
+        setPersistenceValue(event.target.checked);
+    }
+    async function getData(db) {
+        const u = auth.currentUser;
+        const userFind = doc(db, "User", u.email)
+        const userSnap = await getDoc(userFind)
+        if (userSnap.exists()) {
+            console.log(userSnap.data())
+            return navigate("/")
+        }
+        console.log("Fail!")
+        navigate("/Signup/CreateProfile")
+    }
     function handleSubmit(event) {
         event.preventDefault();
-        form = document.getElementById("loginForm")
-        formarea = document.getElementById("form-area")
+        const form = document.getElementById("loginForm")
+        const formarea = document.getElementById("form-area")
         const email = form.email.value
         const password = form.password.value
+        if (persistenceValue) {
+            setPersistence(auth, browserLocalPersistence)
+        } else {
+            setPersistence(auth, browserSessionPersistence)
+        }
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 alert("Login สำเร็จ")
-                history.back();
+                getData(db)
 
             }).catch((error) => {
                 event.preventDefault();
@@ -36,6 +53,8 @@ export default function Login() {
             })
     }
 
+    useEffect(() => {
+    })
     return (
         <div className="container mb-5" >
             <div className="row d-flex justify-content-center align-items-center h-100 ">
@@ -43,7 +62,7 @@ export default function Login() {
                     <img src="" className="border img-fluid" alt="Sample image"></img>
                 </div>
                 <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border bg-white shadow p-5">
-                    <h5>ยินดีต้องรับสู่ Tell Your Story</h5>
+                    <h5>ยินดีต้องรับสู่ Tell Your Story </h5>
                     <h2>เข้าสู่ระบบ</h2><br />
                     <div id="form-area">
                         <form id="loginForm" onSubmit={(event) => handleSubmit(event)}>
@@ -83,7 +102,7 @@ export default function Login() {
                             <div className="d-flex justify-content-between align-items-center">
                                 {/**Check box */}
                                 <div className="form-check mb-0">
-                                    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                    <input name="persistenceValue" className="form-check-input me-2" type="checkbox" id="form2Example3" onChange={handleChange} />
                                     <label className="form-check-label" htmlFor="form2Example3">
                                         จดจำฉันไว้
                                     </label>

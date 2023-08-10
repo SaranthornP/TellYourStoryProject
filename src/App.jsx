@@ -5,14 +5,15 @@ import "bootstrap/dist/js/bootstrap.bundle.min"
 // Navigation bar
 import Navigation from './Navbar'
 
-// Web page 
+//Setup Web page 
 import Home from './components/home'
 import Consult from './components/consult'
 import TalkingArea from './components/talkingArea'
 import Engagement from './components/engagement'
 import Contact from './components/contact'
 import Login from './components/login'
-import Register from './components/register'
+import Register from './components/register/index'
+import CreateProfile from './components/register/formProfile'
 
 // Set up Route for make navigation, Set up helmet
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -59,6 +60,7 @@ export default class App extends Component {
             <Route path='/Contact' element={<Contact />} />
             <Route path='/Signin' element={<Login />} />
             <Route path='/Signup' element={<Register />} />
+            <Route path='/Signup/CreateProfile' element={<CreateProfile />} />
           </Routes>
         </div>
       </BrowserRouter>

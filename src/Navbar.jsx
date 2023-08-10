@@ -31,8 +31,6 @@ export default function Navigation(data) {
         })
     }
 
-
-
     //Function for change navagition when know login state
     useEffect(() => {
         const profile = document.getElementById("profile")
@@ -74,7 +72,7 @@ export default function Navigation(data) {
                                 Profile
                             </button>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
-                                <li><a className="dropdown-item" href="#">แก้ไขโปรไฟล์</a></li>
+                                <li><Link className="dropdown-item" to="/Signup/CreateProfile">แก้ไขโปรไฟล์</Link></li>
                                 <li className='text-center'><button id="profile" className='btn btn-dark ' onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>

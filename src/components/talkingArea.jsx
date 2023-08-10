@@ -14,24 +14,19 @@ async function getUser(db) {
 // Display User data (Test)
 function showUser(user) {
     const u = user.data()
-    console.log("Email :" + u.Email + "\nName: " + u.Firstname)
     text += u.Email + ", "
 }
 
-const userDB = await getUser(db)
 let text = ""
-
-
+const userDB = await getUser(db)
 export default function TalkingArea() {
-
     function test() {
         text = ""
-        userDB.forEach(user => {
-            showUser(user)
-
+        userDB.forEach((data) => {
+            showUser(data)
         })
         text = text.slice(0, -2)
-        console.log(1)
+        console.log(text)
     }
     return (
 
