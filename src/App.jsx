@@ -14,6 +14,7 @@ import Contact from './components/contact'
 import Login from './components/login'
 import Register from './components/register/index'
 import CreateProfile from './components/register/formProfile'
+import Setting from './components/setting'
 
 // Set up Route for make navigation, Set up helmet
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -61,6 +62,7 @@ export default class App extends Component {
             <Route path='/Signin' element={<Login />} />
             <Route path='/Signup' element={<Register />} />
             <Route path='/Signup/CreateProfile' element={<CreateProfile />} />
+            <Route path='/Setting' element={<Setting />} />
           </Routes>
         </div>
       </BrowserRouter>

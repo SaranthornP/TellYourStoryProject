@@ -89,7 +89,7 @@ export default function Login() {
                             <div className="form-floating mb-4 form-group">
                                 <input type="email" name="email" id="floatingEmail" className="form-control form-control-lg"
                                     placeholder="Enter a valid email address" />
-                                <label className="form-label" htmlFor="floatingEmail">Email address</label>
+                                <label className="form-label text-end" htmlFor="floatingEmail">Email address</label>
                             </div>
 
                             {/**Password input */}

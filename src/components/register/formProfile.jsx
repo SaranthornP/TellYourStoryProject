@@ -5,20 +5,26 @@ import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
 export default function Register() {
     const user = auth.currentUser;
-    async function getData(db, firstname, surname) {
+    async function getData(db, firstname, surname, displayname, date, gender) {
         const u = auth.currentUser;
         const userFind = doc(db, "User", u.email)
         const userSnap = await getDoc(userFind)
         if (userSnap.exists()) {
             await updateDoc(doc(db, 'User', user.email), {
                 Firstname: firstname,
-                Surname: surname
+                Surname: surname,
+                Displayname: displayname,
+                Birthdate: date,
+                Gender: gender
             })
-            alert("Update Profile เรียบร้อย")
+            alert("Critical Fail")
         } else {
             setDoc(doc(db, 'User', user.email), {
                 Firstname: firstname,
-                Surname: surname
+                Surname: surname,
+                Displayname: displayname,
+                Birthdate: date,
+                Gender: gender
             })
             alert("สร้าง Profile เรียบร้อย")
         }
@@ -28,8 +34,11 @@ export default function Register() {
         const form = document.getElementById("RegisterForm")
         const firstname = form.firstname.value
         const surname = form.surname.value
+        const displayname = form.display.value
+        const date = form.date.value
+        const gender = form.gender.value
         if (firstname != "" && surname != "") {
-            getData(db, firstname, surname)
+            getData(db, firstname, surname, displayname, date, gender)
         }
         else alert("โปรดกรอกข้อมูล")
 

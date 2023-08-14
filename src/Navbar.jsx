@@ -72,7 +72,7 @@ export default function Navigation(data) {
                                 Profile
                             </button>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
-                                <li><Link className="dropdown-item" to="/Signup/CreateProfile">แก้ไขโปรไฟล์</Link></li>
+                                <li><Link className="dropdown-item" to="/Setting">แก้ไขโปรไฟล์</Link></li>
                                 <li className='text-center'><button id="profile" className='btn btn-dark ' onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>
